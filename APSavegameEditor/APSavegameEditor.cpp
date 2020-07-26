@@ -7,12 +7,14 @@
 #include <QStandardPaths>
 
 #include "APSavegameEditor.h"
+#include "Inventory.h"
 
 APSavegameEditor::APSavegameEditor(QWidget *parent)
     : QMainWindow(parent)
 {
     ui.setupUi(this);
     initializeButtons();
+    initializeTabs();
 }
 
 void APSavegameEditor::initializeButtons() {
@@ -38,4 +40,29 @@ void APSavegameEditor::openNewSavefile() {
 
 void APSavegameEditor::saveCurrentFile() {
     qDebug() << "saving file";
+    stats->commit();
+    inventory->commit();
+}
+
+void APSavegameEditor::initializeTabs() {
+    ui.tabWidget->clear();
+    ui.tabWidget->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Minimum);
+
+    stats = std::make_unique<Stats>(this);
+    ui.tabWidget->addTab(stats.get(), "stats");
+
+    inventory = std::make_unique<Inventory>(this);
+    ui.tabWidget->addTab(inventory.get(), "inventory");
+    //ui.tabWidget->resize(inventory->minimumSize());
+    //connect(ui.tabWidget, &QTabWidget::tabBarClicked, this, &APSavegameEditor::resizeTab);
+    //resizeTab();
+}
+
+void APSavegameEditor::resizeTab() {
+    const QSize tabsize = ui.tabWidget->size();
+    ui.tabWidget->setMinimumSize(tabsize);
+    ui.tabWidget->resize(tabsize);
+    qDebug() << "current tab size: " << tabsize;
+    qDebug() << "hello world";
+    qDebug() << "this is a resizer";
 }

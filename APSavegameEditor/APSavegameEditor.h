@@ -2,6 +2,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_APSavegameEditor.h"
+#include "Inventory.h"
+#include "Stats.h"
 
 class APSavegameEditor : public QMainWindow
 {
@@ -17,8 +19,8 @@ private:
     void initializeTabs();
     void saveCurrentFile();
     void openNewSavefile();
-private slots:
+    void resizeTab();
 
-
-
+    std::unique_ptr<Inventory> inventory;
+    std::unique_ptr<Stats> stats;
 };

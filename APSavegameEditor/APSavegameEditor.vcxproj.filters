@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;hm;inl;inc;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Form Files">
       <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
       <Extensions>ui</Extensions>
@@ -22,24 +18,121 @@
       <Extensions>qrc;*</Extensions>
       <ParseFiles>false</ParseFiles>
     </Filter>
+    <Filter Include="Source Files\view">
+      <UniqueIdentifier>{4d9ee0da-47c3-4701-833f-7545aa6e64ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view">
+      <UniqueIdentifier>{874538bf-087b-40b4-8651-e507ac310ed6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view\Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Source Files\model">
+      <UniqueIdentifier>{3db79f0c-256d-4d50-94aa-fd261ef11dc2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\presenter">
+      <UniqueIdentifier>{808ee8d3-8cbf-4dc8-8165-c08354236edf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\presenter">
+      <UniqueIdentifier>{3e04332f-a943-4803-bf96-1e125fa63665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\model">
+      <UniqueIdentifier>{ac82bad8-c469-4560-90a9-b2c27ad20b66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view\inventory">
+      <UniqueIdentifier>{8d74ea48-c657-4d22-b35e-b4c9e92e2c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view\inventory">
+      <UniqueIdentifier>{ccd5684e-bce4-415a-800d-fca3291d6a5d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view\delegates">
+      <UniqueIdentifier>{0a4296e8-6484-4775-ae28-96b98bc371fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view\delegates">
+      <UniqueIdentifier>{c7a05cbb-5663-4060-84b3-369031f44ed9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\view\stats">
+      <UniqueIdentifier>{52fe296a-029d-45fd-a5d9-c864447bc0cb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\view\stats">
+      <UniqueIdentifier>{247a90f0-a4ad-43d4-a979-cc023e17572b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="APSavegameEditor.qrc">
-      <Filter>Resource Files</Filter>
+      <Filter>Header Files\view\Resource Files</Filter>
     </QtRcc>
     <QtUic Include="APSavegameEditor.ui">
-      <Filter>Resource Files</Filter>
+      <Filter>Header Files\view\Resource Files</Filter>
     </QtUic>
-    <QtMoc Include="APSavegameEditor.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="APSavegameEditor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="APSavegameEditor.cpp">
+      <Filter>Source Files\view</Filter>
+    </ClCompile>
+    <ClCompile Include="SavefileRepository.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="ItemModel.cpp">
+      <Filter>Source Files\model</Filter>
+    </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files\view\inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="SpinBoxDelegate.cpp">
+      <Filter>Source Files\view\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="DropdownDelegate.cpp">
+      <Filter>Source Files\view\delegates</Filter>
+    </ClCompile>
+    <ClCompile Include="ComboDelegate.cpp">
+      <Filter>Source Files\view\inventory</Filter>
+    </ClCompile>
+    <ClCompile Include="Stats.cpp">
+      <Filter>Source Files\view\stats</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="APSavegameEditor.h">
+      <Filter>Header Files\view</Filter>
+    </QtMoc>
+    <QtMoc Include="ItemModel.h">
+      <Filter>Header Files\model</Filter>
+    </QtMoc>
+    <QtMoc Include="Inventory.h">
+      <Filter>Header Files\view\inventory</Filter>
+    </QtMoc>
+    <QtMoc Include="SpinBoxDelegate.h">
+      <Filter>Header Files\view\delegates</Filter>
+    </QtMoc>
+    <QtMoc Include="DropdownDelegate.h">
+      <Filter>Header Files\view\delegates</Filter>
+    </QtMoc>
+    <QtMoc Include="ComboDelegate.h">
+      <Filter>Header Files\view\inventory</Filter>
+    </QtMoc>
+    <QtMoc Include="Stats.h">
+      <Filter>Header Files\view\stats</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Inventory.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Stats.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StyleSheet.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SavefileRepository.h">
+      <Filter>Header Files\model</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

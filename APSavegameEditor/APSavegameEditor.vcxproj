@@ -91,11 +91,34 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ComboDelegate.cpp" />
+    <ClCompile Include="DropdownDelegate.cpp" />
+    <ClCompile Include="ItemModel.cpp" />
+    <ClCompile Include="SavefileRepository.cpp" />
+    <ClCompile Include="SpinBoxDelegate.cpp" />
+    <ClCompile Include="Stats.cpp" />
     <QtRcc Include="APSavegameEditor.qrc" />
     <QtUic Include="APSavegameEditor.ui" />
     <QtMoc Include="APSavegameEditor.h" />
     <ClCompile Include="APSavegameEditor.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="main.cpp" />
+    <QtUic Include="Inventory.ui" />
+    <QtUic Include="Stats.ui" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Inventory.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="StyleSheet.qss" />
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Stats.h" />
+    <QtMoc Include="ComboDelegate.h" />
+    <QtMoc Include="DropdownDelegate.h" />
+    <QtMoc Include="SpinBoxDelegate.h" />
+    <QtMoc Include="ItemModel.h" />
+    <ClInclude Include="SavefileRepository.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
