@@ -9,6 +9,7 @@ class APSavegameEditor : public QMainWindow
 
 public:
     APSavegameEditor(QWidget *parent = Q_NULLPTR);
+    const QString SAVEGAME_SUBDIRECTORY = "/Alpha Protocol/Checkpoints";
 
 private:
     Ui::APSavegameEditorClass ui;
