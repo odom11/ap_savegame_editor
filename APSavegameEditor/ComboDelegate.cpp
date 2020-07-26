@@ -2,11 +2,10 @@
 #include "SpinBoxDelegate.h"
 #include <stdexcept>
 
-ComboDelegate::ComboDelegate(QObject *parent)
+ComboDelegate::ComboDelegate(QObject *parent, std::vector<std::string>&& options)
 	: QItemDelegate(parent)
 {
     spinbox = std::make_unique<SpinBoxDelegate>(this);
-    std::vector<std::string> options{ "spam", "bam", "carst"};
     dropdown = std::make_unique<DropdownDelegate>(this, std::move(options));
 }
 

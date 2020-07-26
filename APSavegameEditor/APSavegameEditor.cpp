@@ -47,6 +47,7 @@ void APSavegameEditor::openNewSavefile() {
         return;
     }
     stats->update();
+    inventory->update();
 
     qDebug() << "opened filename: " << filename;
 }

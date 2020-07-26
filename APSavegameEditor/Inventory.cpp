@@ -21,14 +21,16 @@ Inventory::~Inventory()
 void Inventory::setupTable() {
 	itemModel = std::make_unique<ItemModel>(this);
 	ui.tableView->setModel(itemModel.get());
-	delegate = std::make_unique<ComboDelegate>(this);
+
+	delegate = std::make_unique<ComboDelegate>(this, itemModel->getItemNames());
 	ui.tableView->setItemDelegate(delegate.get());
 }
 
 void Inventory::commit() {
+	itemModel->commit();
 	qDebug() << "committing inventory";
 }
 
 void Inventory::update() {
-
+	itemModel->update();
 }

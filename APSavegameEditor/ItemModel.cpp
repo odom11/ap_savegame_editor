@@ -1,8 +1,13 @@
 #include "ItemModel.h"
 
+const std::string GADGET_PREFIX = "SLOT_GADGET_";
+const std::string GADGET_TYPE_SUFFIX = "_Value";
+const std::string GADGET_COUNT_SUFFIX = "_Num";
+
 ItemModel::ItemModel(QObject *parent)
 	: QAbstractTableModel(parent)
 {
+    initializeMappings();
 }
 
 ItemModel::~ItemModel()
@@ -43,4 +48,30 @@ bool ItemModel::setData(const QModelIndex& index, const QVariant& value, int rol
 Qt::ItemFlags ItemModel::flags(const QModelIndex& index) const
 {
     return Qt::ItemIsEditable | QAbstractTableModel::flags(index);
+}
+
+void ItemModel::update() {
+
+
+
+
+
+    QModelIndex index;
+    QModelIndex topLeftIndex = index.sibling(0, 0);
+    QModelIndex bottomRight = index.sibling(ROWS - 1, COLS - 1);
+    emit QAbstractItemModel::dataChanged(topLeftIndex, bottomRight);
+}
+
+void ItemModel::commit() {
+
+}
+
+std::vector<std::string> ItemModel::getItemNames() {
+    std::vector<std::string> names;
+    names.reserve(nameIdMapping.size());
+    std::transform(nameIdMapping.begin(), nameIdMapping.end(), std::back_inserter(names), [&](const auto& it) {return it.first; });
+    return names;
+}
+
+void ItemModel::initializeMappings() {
 }
