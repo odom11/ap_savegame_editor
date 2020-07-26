@@ -28,3 +28,7 @@ void Inventory::setupTable() {
 void Inventory::commit() {
 	qDebug() << "committing inventory";
 }
+
+void Inventory::update() {
+
+}

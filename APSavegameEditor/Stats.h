@@ -11,7 +11,10 @@ public:
 	Stats(QWidget *parent = Q_NULLPTR);
 	~Stats();
 	void commit();
+	void update();
 
 private:
+	
 	Ui::Stats ui;
+	void initializeFreeStatpoints();
 };

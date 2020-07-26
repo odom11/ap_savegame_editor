@@ -31,12 +31,6 @@
     <Filter Include="Source Files\model">
       <UniqueIdentifier>{3db79f0c-256d-4d50-94aa-fd261ef11dc2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\presenter">
-      <UniqueIdentifier>{808ee8d3-8cbf-4dc8-8165-c08354236edf}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\presenter">
-      <UniqueIdentifier>{3e04332f-a943-4803-bf96-1e125fa63665}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\model">
       <UniqueIdentifier>{ac82bad8-c469-4560-90a9-b2c27ad20b66}</UniqueIdentifier>
     </Filter>

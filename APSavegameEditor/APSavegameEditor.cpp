@@ -6,6 +6,8 @@
 #include <QFileDialog>
 #include <QStandardPaths>
 
+#include "SavefileRepository.h"
+
 #include "APSavegameEditor.h"
 #include "Inventory.h"
 
@@ -35,6 +37,17 @@ void APSavegameEditor::openNewSavefile() {
     QString documents = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     QString apPath = documents + SAVEGAME_SUBDIRECTORY;
     QString filename = QFileDialog::getOpenFileName(this, "open save file", apPath, "save files (*.SAV) ;; all files (*.*)");
+    bool success = false;
+    if (!filename.isEmpty()) {
+        SavefileRepository& repo = SavefileRepository::getInstance();
+        success = repo.readdata(filename.toUtf8().constData());
+    }
+    if (!success) {
+        qDebug() << "could not read any data";
+        return;
+    }
+    stats->update();
+
     qDebug() << "opened filename: " << filename;
 }
 
@@ -42,6 +55,7 @@ void APSavegameEditor::saveCurrentFile() {
     qDebug() << "saving file";
     stats->commit();
     inventory->commit();
+    SavefileRepository::getInstance().commit();
 }
 
 void APSavegameEditor::initializeTabs() {
@@ -53,9 +67,6 @@ void APSavegameEditor::initializeTabs() {
 
     inventory = std::make_unique<Inventory>(this);
     ui.tabWidget->addTab(inventory.get(), "inventory");
-    //ui.tabWidget->resize(inventory->minimumSize());
-    //connect(ui.tabWidget, &QTabWidget::tabBarClicked, this, &APSavegameEditor::resizeTab);
-    //resizeTab();
 }
 
 void APSavegameEditor::resizeTab() {
@@ -66,3 +77,4 @@ void APSavegameEditor::resizeTab() {
     qDebug() << "hello world";
     qDebug() << "this is a resizer";
 }
+

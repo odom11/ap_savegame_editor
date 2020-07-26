@@ -21,6 +21,7 @@ private:
     void openNewSavefile();
     void resizeTab();
 
+
     std::unique_ptr<Inventory> inventory;
     std::unique_ptr<Stats> stats;
 };

@@ -13,7 +13,7 @@ public:
 	Inventory(QWidget *parent = Q_NULLPTR);
 	~Inventory();
 	void commit();
-
+	void update();
 private:
 	void setupTable();
 	Ui::Inventory ui;
