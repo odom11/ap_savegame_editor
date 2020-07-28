@@ -1,17 +1,17 @@
 #pragma once
 
 #include <QWidget>
-#include "ui_Inventory.h"
+#include "ui_Gadgets.h"
 #include "ComboDelegate.h"
 #include "ItemModel.h"
 
-class Inventory : public QWidget
+class Gadgets : public QWidget
 {
 	Q_OBJECT
 
 public:
-	Inventory(QWidget *parent = Q_NULLPTR);
-	~Inventory();
+	Gadgets(QWidget *parent = Q_NULLPTR);
+	~Gadgets();
 	void commit();
 	void update();
 private:

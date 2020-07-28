@@ -37,12 +37,14 @@ void Stats::update() {
 }
 
 void Stats::initializeFreeStatpoints() {
-	ui.freeStatpointsLabel->setText("unusedStatpoints");
+	ui.freeStatpointsLabel->setText("unused statpoints");
 	ui.freeStatpointsValue->setValue(0);
 	ui.freeStatpointsValue->setMaximum(255);
 	ui.freeStatpointsValue->setMinimum(0);
+	ui.freeStatpointsLabel->resize(ui.freeStatpointsLabel->minimumSizeHint());
 
 	ui.moneyLabel->setText("money");
 	ui.moneyValue->setValue(0);
-	ui.moneyValue->setMaximum(10000000);
+	ui.moneyValue->setMaximum(100000000);
+	layout();
 }

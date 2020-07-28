@@ -2,7 +2,7 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_APSavegameEditor.h"
-#include "Inventory.h"
+#include "Gadgets.h"
 #include "Stats.h"
 
 class APSavegameEditor : public QMainWindow
@@ -22,6 +22,6 @@ private:
     void resizeTab();
 
 
-    std::unique_ptr<Inventory> inventory;
+    std::unique_ptr<Gadgets> inventory;
     std::unique_ptr<Stats> stats;
 };

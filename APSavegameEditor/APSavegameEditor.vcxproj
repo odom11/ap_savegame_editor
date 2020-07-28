@@ -101,13 +101,13 @@
     <QtUic Include="APSavegameEditor.ui" />
     <QtMoc Include="APSavegameEditor.h" />
     <ClCompile Include="APSavegameEditor.cpp" />
-    <ClCompile Include="Inventory.cpp" />
+    <ClCompile Include="Gadgets.cpp" />
     <ClCompile Include="main.cpp" />
-    <QtUic Include="Inventory.ui" />
+    <QtUic Include="Gadgets.ui" />
     <QtUic Include="Stats.ui" />
   </ItemGroup>
   <ItemGroup>
-    <QtMoc Include="Inventory.h" />
+    <QtMoc Include="Gadgets.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="StyleSheet.qss" />

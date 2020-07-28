@@ -1,4 +1,5 @@
 #include "ItemModel.h"
+#include "SavefileRepository.h"
 
 const std::string GADGET_PREFIX = "SLOT_GADGET_";
 const std::string GADGET_TYPE_SUFFIX = "_Value";
@@ -51,10 +52,21 @@ Qt::ItemFlags ItemModel::flags(const QModelIndex& index) const
 }
 
 void ItemModel::update() {
+    for (int i = 0; i < ROWS; ++i) {
+        std::string itemKey = GADGET_PREFIX + std::to_string(i + 1) + GADGET_TYPE_SUFFIX;
+        std::byte itemId = SavefileRepository::getInstance().lookForValue(itemKey);
 
+        std::string numKey = GADGET_PREFIX + std::to_string(i + 1) + GADGET_COUNT_SUFFIX;
+        std::byte numItems = SavefileRepository::getInstance().lookForValue(numKey);
 
-
-
+        if (idNameMapping.contains((int)itemId)) {
+            m_gridData[i][0] = QString::fromStdString(idNameMapping[(int) itemId]);
+        }
+        else {
+            m_gridData[i][0] = QString::fromStdString(std::to_string((int)itemId));
+        }
+        m_gridData[i][1] = QString::fromStdString(std::to_string((int) numItems));
+    }
 
     QModelIndex index;
     QModelIndex topLeftIndex = index.sibling(0, 0);
@@ -63,7 +75,25 @@ void ItemModel::update() {
 }
 
 void ItemModel::commit() {
+    for (int i = 0; i < ROWS; ++i) {
+        std::string itemKey = GADGET_PREFIX + std::to_string(i + 1) + GADGET_TYPE_SUFFIX;
+        std::string numKey = GADGET_PREFIX + std::to_string(i + 1) + GADGET_COUNT_SUFFIX;
 
+        std::byte count = (std::byte) m_gridData[i][1].toInt();
+        std::string gridItemId = m_gridData[i][0].toStdString();
+        std::byte itemNumber = nameIdMapping.contains(gridItemId) ? (std::byte) nameIdMapping[gridItemId] : (std::byte) m_gridData[i][0].toInt();
+
+        if (itemNumber == (std::byte) 0) {
+            count = (std::byte) 0;
+        }
+
+        if (count == (std::byte) 0) {
+            itemNumber = (std::byte) 0;
+        }
+
+        SavefileRepository::getInstance().alterValue(itemKey, itemNumber);
+        SavefileRepository::getInstance().alterValue(numKey, count);
+    }
 }
 
 std::vector<std::string> ItemModel::getItemNames() {
@@ -74,4 +104,29 @@ std::vector<std::string> ItemModel::getItemNames() {
 }
 
 void ItemModel::initializeMappings() {
+
+    auto enter = [&](const std::tuple<std::string, int> item) {
+        nameIdMapping[std::get<0>(item)] = std::get<1>(item);
+        idNameMapping[std::get<1>(item)] = std::get<0>(item);
+    };
+
+    auto tuple = std::make_tuple("", 0);
+    enter(tuple);
+
+    tuple = std::make_tuple("radio mimic", 24);
+    enter(tuple);
+
+
+
+    tuple = std::make_tuple("incendiary bomb", 7);
+    enter(tuple);
+
+    tuple = std::make_tuple("explosive grenade", 1);
+    enter(tuple);
+
+    tuple = std::make_tuple("emp grenade", 10);
+    enter(tuple);
+
+    tuple = std::make_tuple("first aid", 21);
+    enter(tuple);
 }

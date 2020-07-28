@@ -1,36 +1,37 @@
 #include <QAbstractItemView>
 #include <QDebug>
 
-#include "Inventory.h"
+#include "Gadgets.h"
 #include "ItemModel.h"
 #include "SpinBoxDelegate.h"
 #include "ComboDelegate.h"
 #include "DropdownDelegate.h"
 
-Inventory::Inventory(QWidget *parent)
+Gadgets::Gadgets(QWidget *parent)
 	: QWidget(parent)
 {
 	ui.setupUi(this);
 	setupTable();
 }
 
-Inventory::~Inventory()
+Gadgets::~Gadgets()
 {
 }
 
-void Inventory::setupTable() {
+void Gadgets::setupTable() {
 	itemModel = std::make_unique<ItemModel>(this);
 	ui.tableView->setModel(itemModel.get());
+	//ui.tableView->setEditTriggers(QAbstractItemView::AnyKeyPressed);
 
 	delegate = std::make_unique<ComboDelegate>(this, itemModel->getItemNames());
 	ui.tableView->setItemDelegate(delegate.get());
 }
 
-void Inventory::commit() {
+void Gadgets::commit() {
 	itemModel->commit();
 	qDebug() << "committing inventory";
 }
 
-void Inventory::update() {
+void Gadgets::update() {
 	itemModel->update();
 }

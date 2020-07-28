@@ -16,7 +16,8 @@ QWidget* SpinBoxDelegate::createEditor(QWidget* parent,
 {
     QSpinBox* editor = new QSpinBox(parent);
     editor->setMinimum(0);
-    editor->setMaximum(100);
+    editor->setMaximum(255);
+    connect(editor, SIGNAL(valueChange(int)), editor, SLOT(setValue(int)));
 
     return editor;
 }

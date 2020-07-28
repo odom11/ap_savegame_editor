@@ -9,7 +9,7 @@
 #include "SavefileRepository.h"
 
 #include "APSavegameEditor.h"
-#include "Inventory.h"
+#include "Gadgets.h"
 
 APSavegameEditor::APSavegameEditor(QWidget *parent)
     : QMainWindow(parent)
@@ -66,8 +66,8 @@ void APSavegameEditor::initializeTabs() {
     stats = std::make_unique<Stats>(this);
     ui.tabWidget->addTab(stats.get(), "stats");
 
-    inventory = std::make_unique<Inventory>(this);
-    ui.tabWidget->addTab(inventory.get(), "inventory");
+    inventory = std::make_unique<Gadgets>(this);
+    ui.tabWidget->addTab(inventory.get(), "gadgets");
 }
 
 void APSavegameEditor::resizeTab() {
