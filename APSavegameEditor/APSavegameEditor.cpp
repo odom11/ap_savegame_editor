@@ -48,6 +48,7 @@ void APSavegameEditor::openNewSavefile() {
     }
     stats->update();
     inventory->update();
+    ammo->update();
 
     qDebug() << "opened filename: " << filename;
 }
@@ -56,6 +57,7 @@ void APSavegameEditor::saveCurrentFile() {
     qDebug() << "saving file";
     stats->commit();
     inventory->commit();
+    ammo->commit();
     SavefileRepository::getInstance().commit();
 }
 
@@ -68,6 +70,9 @@ void APSavegameEditor::initializeTabs() {
 
     inventory = std::make_unique<Gadgets>(this);
     ui.tabWidget->addTab(inventory.get(), "gadgets");
+
+    ammo = std::make_unique<AmmoTab>(this);
+    ui.tabWidget->addTab(ammo.get(), "ammo");
 }
 
 void APSavegameEditor::resizeTab() {

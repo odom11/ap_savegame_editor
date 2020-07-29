@@ -51,6 +51,11 @@
       <LanguageStandard>stdcpplatest</LanguageStandard>
     </ClCompile>
   </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+  </ItemDefinitionGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'" Label="QtSettings">
     <QtInstall>15</QtInstall>
     <QtModules>core;gui;widgets</QtModules>
@@ -91,13 +96,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AmmoTab.cpp" />
     <ClCompile Include="ComboDelegate.cpp" />
     <ClCompile Include="DropdownDelegate.cpp" />
     <ClCompile Include="ItemModel.cpp" />
     <ClCompile Include="SavefileRepository.cpp" />
     <ClCompile Include="SpinBoxDelegate.cpp" />
     <ClCompile Include="Stats.cpp" />
+    <ClCompile Include="WeaponAmmo.cpp" />
     <QtRcc Include="APSavegameEditor.qrc" />
+    <QtUic Include="AmmoTab.ui" />
     <QtUic Include="APSavegameEditor.ui" />
     <QtMoc Include="APSavegameEditor.h" />
     <ClCompile Include="APSavegameEditor.cpp" />
@@ -105,6 +113,7 @@
     <ClCompile Include="main.cpp" />
     <QtUic Include="Gadgets.ui" />
     <QtUic Include="Stats.ui" />
+    <QtUic Include="WeaponAmmo.ui" />
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="Gadgets.h" />
@@ -113,11 +122,13 @@
     <None Include="StyleSheet.qss" />
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="WeaponAmmo.h" />
     <QtMoc Include="Stats.h" />
     <QtMoc Include="ComboDelegate.h" />
     <QtMoc Include="DropdownDelegate.h" />
     <QtMoc Include="SpinBoxDelegate.h" />
     <QtMoc Include="ItemModel.h" />
+    <QtMoc Include="AmmoTab.h" />
     <ClInclude Include="SavefileRepository.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

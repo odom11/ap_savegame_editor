@@ -1,5 +1,4 @@
 
-QPushButton { color: red }
 
 QToolButton {
 	min-width: 40px;

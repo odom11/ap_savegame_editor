@@ -127,6 +127,21 @@ void ItemModel::initializeMappings() {
     tuple = std::make_tuple("emp grenade", 10);
     enter(tuple);
 
-    tuple = std::make_tuple("first aid", 21);
+    tuple = std::make_tuple("med kit", 21);
+    enter(tuple);
+
+    tuple = std::make_tuple("emp grenade mk2", 11);
+    enter(tuple);
+
+    tuple = std::make_tuple("explosive grenade mk2", 2);
+    enter(tuple);
+
+    tuple = std::make_tuple("sound generator", 20);
+    enter(tuple);
+
+    tuple = std::make_tuple("med kit mk2", 22);
+    enter(tuple);
+
+    tuple = std::make_tuple("remote mine", 17);
     enter(tuple);
 }

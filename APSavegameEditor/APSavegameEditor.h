@@ -4,6 +4,7 @@
 #include "ui_APSavegameEditor.h"
 #include "Gadgets.h"
 #include "Stats.h"
+#include "AmmoTab.h"
 
 class APSavegameEditor : public QMainWindow
 {
@@ -24,4 +25,5 @@ private:
 
     std::unique_ptr<Gadgets> inventory;
     std::unique_ptr<Stats> stats;
+    std::unique_ptr<AmmoTab> ammo;
 };
