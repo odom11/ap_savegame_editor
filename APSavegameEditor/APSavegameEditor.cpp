@@ -20,19 +20,17 @@ APSavegameEditor::APSavegameEditor(QWidget *parent)
 }
 
 void APSavegameEditor::initializeButtons() {
-    ui.closeButton->setIcon(style()->standardIcon(QStyle::SP_DialogCloseButton));
-    ui.closeButton->setToolTip(tr("close application"));
-    ui.openButton->setIcon(style()->standardIcon(QStyle::SP_DialogOpenButton));
-    ui.openButton->setToolTip(tr("load a save file"));
-    ui.saveButton->setIcon(style()->standardIcon(QStyle::SP_DialogSaveButton));
-    ui.saveButton->setToolTip(tr("save changes to savefile (creates a backup file)"));
+    ui.actionopen->setIcon(style()->standardIcon(QStyle::SP_DialogOpenButton));
+    connect(ui.actionopen, &QAction::triggered, this, &APSavegameEditor::openNewSavefile);
 
-    connect(ui.openButton, &QToolButton::clicked, this, &APSavegameEditor::openNewSavefile);
-    connect(ui.saveButton, &QToolButton::clicked, this, &APSavegameEditor::saveCurrentFile);
-    connect(ui.closeButton, &QToolButton::clicked, this, &QApplication::quit);
+    ui.actionsave->setIcon(style()->standardIcon(QStyle::SP_DialogSaveButton));
+    connect(ui.actionsave, &QAction::triggered, this, &APSavegameEditor::saveCurrentFile);
+
+    ui.actionexit->setIcon(style()->standardIcon(QStyle::SP_DialogCloseButton));
+    connect(ui.actionexit, &QAction::triggered, this, &QApplication::quit);
 }
-
-void APSavegameEditor::openNewSavefile() {
+	
+	void APSavegameEditor::openNewSavefile() {
     qDebug() << "opening savefile";
     QString documents = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     QString apPath = documents + SAVEGAME_SUBDIRECTORY;
