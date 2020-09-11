@@ -91,11 +91,10 @@ bool SavefileRepository::alterIntValue(const std::string& key, int newValue) {
 	if (!commonRequests.contains(key)) {
 		return false;
 	}
-	std::byte toCopy[4];
 	std::byte* ptr = reinterpret_cast<std::byte*>(&newValue);
 	std::reverse(ptr, ptr + INT_SIZE);
 	unsigned int offset = commonRequests[key];
 	auto targetIt = data.begin() + offset;
-	std::copy(ptr, ptr + 4, targetIt);
+	std::copy(ptr, ptr + INT_SIZE, targetIt);
 	return true;
 }
