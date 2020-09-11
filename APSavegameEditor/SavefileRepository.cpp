@@ -6,6 +6,8 @@
 
 #include "SavefileRepository.h"
 
+constexpr unsigned int INT_SIZE = 4;
+
 std::unique_ptr<SavefileRepository> SavefileRepository::currentInstance;
 
 SavefileRepository::SavefileRepository() {}
@@ -66,16 +68,14 @@ std::byte SavefileRepository::lookForValue(const std::string& key, unsigned int 
 int SavefileRepository::lookForIntValue(const std::string& key, unsigned int offset) {
 	lookForValue(key, offset);
 	auto storedOffset = commonRequests[key];
-	std::byte toCopy[4];
-	auto startCopy = data.begin() + storedOffset;
-	std::copy(startCopy, startCopy + 4, std::begin(toCopy));
-	int returnValue;
-	std::byte* ptr = reinterpret_cast<std::byte*>(&returnValue);
-	ptr[0] = toCopy[3];
-	ptr[1] = toCopy[2];
-	ptr[2] = toCopy[1];
-	ptr[3] = toCopy[0];
-	//int returnvalue = (static_cast<char>(toCopy[3] << 24) | (toCopy[2] << 16) | (toCopy[1] << 8) | (toCopy[0]);
+
+	auto startCopy = data.rbegin() + data.size() - storedOffset - INT_SIZE;
+	std::byte temp[INT_SIZE];
+	std::copy(startCopy, startCopy + INT_SIZE, temp);
+
+	int returnValue = 0;
+	std::copy(temp, temp + INT_SIZE, reinterpret_cast<std::byte*>(&returnValue));
+	
 	return returnValue;
 }
 
@@ -93,11 +93,9 @@ bool SavefileRepository::alterIntValue(const std::string& key, int newValue) {
 	}
 	std::byte toCopy[4];
 	std::byte* ptr = reinterpret_cast<std::byte*>(&newValue);
-	toCopy[0] = ptr[3];
-	toCopy[1] = ptr[2];
-	toCopy[2] = ptr[1];
-	toCopy[3] = ptr[0];
+	std::reverse(ptr, ptr + INT_SIZE);
 	unsigned int offset = commonRequests[key];
 	auto targetIt = data.begin() + offset;
-	std::copy(std::begin(toCopy), std::end(toCopy), targetIt);
+	std::copy(ptr, ptr + 4, targetIt);
+	return true;
 }

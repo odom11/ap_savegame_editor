@@ -2,7 +2,6 @@
 
 #include <QStyle>
 #include <QDebug>
-#include <QWidget>
 #include <QFileDialog>
 #include <QStandardPaths>
 
