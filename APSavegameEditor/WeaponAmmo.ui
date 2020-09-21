@@ -6,14 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>165</width>
-    <height>125</height>
+    <width>226</width>
+    <height>232</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>WeaponAmmo</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <item>
+    <spacer name="verticalSpacer">
+     <property name="orientation">
+      <enum>Qt::Vertical</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>20</width>
+       <height>40</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
    <item>
     <widget class="QLabel" name="title">
      <property name="text">
@@ -23,15 +36,22 @@
    </item>
    <item>
     <layout class="QGridLayout" name="gridLayout">
-     <item row="0" column="1">
-      <widget class="QSpinBox" name="ammoControl1"/>
-     </item>
      <item row="0" column="0">
       <widget class="QLabel" name="ammo1">
        <property name="text">
         <string>TextLabel</string>
        </property>
       </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="ammo3">
+       <property name="text">
+        <string>TextLabel</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QSpinBox" name="ammoControl3"/>
      </item>
      <item row="1" column="0">
       <widget class="QLabel" name="ammo2">
@@ -43,15 +63,21 @@
      <item row="1" column="1">
       <widget class="QSpinBox" name="ammoControl2"/>
      </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="ammo3">
-       <property name="text">
-        <string>TextLabel</string>
-       </property>
-      </widget>
+     <item row="0" column="1">
+      <widget class="QSpinBox" name="ammoControl1"/>
      </item>
-     <item row="2" column="1">
-      <widget class="QSpinBox" name="ammoControl3"/>
+     <item row="1" column="2">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
      </item>
     </layout>
    </item>

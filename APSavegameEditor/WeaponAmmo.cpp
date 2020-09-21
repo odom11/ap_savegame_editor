@@ -11,6 +11,7 @@ WeaponAmmo::WeaponAmmo(QWidget* parent, const std::string& title, std::vector<st
 	ui.setupUi(this);
 	this->ammospecifier = std::move(ammospecifier);
 	setTexts(title);
+	ui.title->setStyleSheet("font-weight: bold");
 	controls.push_back(ui.ammoControl1);
 	controls.push_back(ui.ammoControl2);
 	controls.push_back(ui.ammoControl3);
