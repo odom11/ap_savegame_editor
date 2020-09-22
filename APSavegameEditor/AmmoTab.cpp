@@ -25,6 +25,7 @@ void AmmoTab::initializeWeapons() {
 			ui.gridLayout->addWidget(weapons[2*row + col].get(), row, col);
 		}
 	}
+	ui.gridLayout->addItem(new QSpacerItem(5, 5), 2, 0);
 }
 
 void AmmoTab::update() {

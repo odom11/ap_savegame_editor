@@ -9,6 +9,7 @@
 
 #include "APSavegameEditor.h"
 #include "Gadgets.h"
+#include <QMessageBox>
 
 APSavegameEditor::APSavegameEditor(QWidget *parent)
     : QMainWindow(parent)
@@ -29,7 +30,7 @@ void APSavegameEditor::initializeButtons() {
     connect(ui.actionexit, &QAction::triggered, this, &QApplication::quit);
 }
 	
-	void APSavegameEditor::openNewSavefile() {
+void APSavegameEditor::openNewSavefile() {
     qDebug() << "opening savefile";
     QString documents = QStandardPaths::writableLocation(QStandardPaths::DocumentsLocation);
     QString apPath = documents + SAVEGAME_SUBDIRECTORY;
@@ -47,6 +48,7 @@ void APSavegameEditor::initializeButtons() {
     inventory->update();
     ammo->update();
 
+    handleMissingKeys();
     qDebug() << "opened filename: " << filename;
 }
 
@@ -81,3 +83,20 @@ void APSavegameEditor::resizeTab() {
     qDebug() << "this is a resizer";
 }
 
+void APSavegameEditor::handleMissingKeys()
+{
+	if (SavefileRepository::getInstance().getMissingKeys().empty())
+	{
+		return;
+	}
+    auto missingList = SavefileRepository::getInstance().getMissingKeys();
+    std::string message = std::reduce(
+        missingList.begin(),
+        missingList.end(),
+        std::string("did not find the following keys:"),
+        [](const std::string& first, const std::string& second) {return first + "\n- " + second; });
+    message += "\ndisplaying default values. Corresponding changes are not saved.";
+    QMessageBox info;
+    info.setText(QString::fromStdString(message));
+    info.exec();
+}

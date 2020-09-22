@@ -22,6 +22,7 @@ SavefileRepository& SavefileRepository::getInstance() {
 
 bool SavefileRepository::readdata(const std::string& filename) {
 	commonRequests.clear();
+	missingKeys.clear();
 	std::basic_ifstream<std::byte> myfile{ filename, std::ios::binary };
 	if (!myfile.good()) {		
 		qDebug() << "file " << QString::fromStdString(filename) << " does not exist";
@@ -46,27 +47,22 @@ std::byte SavefileRepository::lookForValue(const std::string& key, unsigned int 
 	std::vector<std::byte> searchItem;
 	searchItem.reserve(key.size());
 	std::transform(key.begin(), key.end(), std::back_inserter(searchItem), [](const auto& i) {return static_cast<std::byte>(i); });
-
-	auto found = data.begin();
-	do {
-		found = std::find(found, data.end(), *searchItem.begin());
-		auto mismatchPair = std::mismatch(searchItem.begin(), searchItem.end(), found);
-		if (mismatchPair.first == searchItem.end()) {
-			break;
-		}
-		++found;
-	} while (found != data.end());
-	if (found == data.end()) {
-		qDebug() << "Error: found no item";
+	auto match = std::search(data.begin(), data.end(), searchItem.begin(), searchItem.end());
+	if (match == data.end()) {
+		missingKeys.push_back(key);
 		return std::byte(-1);
 	}
-	found += key.size() + offset;
-	commonRequests[key] = found - data.begin();
-	return *found;
+
+	match += key.size() + offset;
+	commonRequests[key] = match - data.begin();
+	return *match;
 }
 
 int SavefileRepository::lookForIntValue(const std::string& key, unsigned int offset) {
 	lookForValue(key, offset);
+	if (!commonRequests.contains(key)) {
+		return -11;
+	}
 	auto storedOffset = commonRequests[key];
 
 	auto startCopy = data.rbegin() + data.size() - storedOffset - INT_SIZE;
@@ -85,6 +81,7 @@ bool SavefileRepository::alterValue(const std::string& key, std::byte newValue) 
 	}
 	auto position = commonRequests[key];
 	data[position] = newValue;
+	return true;
 }
 
 bool SavefileRepository::alterIntValue(const std::string& key, int newValue) {
@@ -97,4 +94,8 @@ bool SavefileRepository::alterIntValue(const std::string& key, int newValue) {
 	auto targetIt = data.begin() + offset;
 	std::copy(ptr, ptr + INT_SIZE, targetIt);
 	return true;
+}
+
+const std::list<std::string>& SavefileRepository::getMissingKeys() const {
+	return missingKeys;
 }

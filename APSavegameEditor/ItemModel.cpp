@@ -100,6 +100,7 @@ std::vector<std::string> ItemModel::getItemNames() {
     std::vector<std::string> names;
     names.reserve(nameIdMapping.size());
     std::transform(nameIdMapping.begin(), nameIdMapping.end(), std::back_inserter(names), [&](const auto& it) {return it.first; });
+    std::sort(names.begin(), names.end());
     return names;
 }
 

@@ -16,5 +16,6 @@ public:
 private:
 	
 	Ui::Stats ui;
-	void initializeFreeStatpoints();
+	void initializeGeneral();
+	void initializeDialog();
 };

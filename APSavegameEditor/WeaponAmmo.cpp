@@ -9,6 +9,7 @@ WeaponAmmo::WeaponAmmo(QWidget* parent, const std::string& title, std::vector<st
 	: QWidget(parent), title(title)
 {
 	ui.setupUi(this);
+	ui.frame->setFrameStyle(QFrame::WinPanel | QFrame::Raised);
 	this->ammospecifier = std::move(ammospecifier);
 	setTexts(title);
 	ui.title->setStyleSheet("font-weight: bold");

@@ -21,6 +21,7 @@ private:
     void saveCurrentFile();
     void openNewSavefile();
     void resizeTab();
+    void handleMissingKeys();
 
 
     std::unique_ptr<Gadgets> inventory;
