@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>283</width>
-    <height>274</height>
+    <width>157</width>
+    <height>145</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="windowTitle">
    <string>APSavegameEditor</string>
@@ -50,7 +56,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>283</width>
+     <width>157</width>
      <height>26</height>
     </rect>
    </property>
@@ -66,7 +72,6 @@
    <addaction name="actionsave"/>
    <addaction name="actionexit"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
   <action name="actionopen">
    <property name="text">
     <string>open</string>

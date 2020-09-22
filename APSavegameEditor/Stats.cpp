@@ -76,8 +76,9 @@ void Stats::initializeGeneral() {
 void Stats::initializeDialog()
 {
 	ui.dialogFrame->setFrameStyle(BOX_STYLE);
-	ui.dialogLabel->setText("dialog options \n(suave > other\nrequired to kill Marburg\nin Rome)");
+	ui.dialogLabel->setText("dialog options (suave > other required to kill Marburgin Rome)");
 	ui.dialogLabel->setStyleSheet("font-weight: bold");
+	ui.dialogLabel->setWordWrap(true);
 	ui.suaveChosenLabel->setText("suave chosen");
 
 	ui.suaveChosenValue->setMinimum(0);

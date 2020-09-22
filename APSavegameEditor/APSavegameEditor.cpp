@@ -17,6 +17,7 @@ APSavegameEditor::APSavegameEditor(QWidget *parent)
     ui.setupUi(this);
     initializeButtons();
     initializeTabs();
+    setWindowFlags(Qt::MSWindowsFixedSizeDialogHint | Qt::Dialog);
 }
 
 void APSavegameEditor::initializeButtons() {
