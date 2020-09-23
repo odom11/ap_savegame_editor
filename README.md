@@ -5,10 +5,11 @@ this is a savegame editor for alpha protocol. It allows changing the following a
 * number of free stat points
 * gadgets (EMP grenades etc)
 * ammunition
+* number of suave/aggressive/professional dialog choices (important for killing Marburg in Rome)
 
 The same could be achieved loading the file into a hex editor, but I found this more convenient.
 
-**THE PROGRAM CRASHES ON A NEWLY CREATED SAVE. YOU HAVE TO FINISH TRAINING AT LEAST AND GO TILL SAUDI ARABIA**
+~**THE PROGRAM CRASHES ON A NEWLY CREATED SAVE. YOU HAVE TO FINISH TRAINING AT LEAST AND GO TILL SAUDI ARABIA**~
 
 The software was created with Visual Studio 2019 using Qt5. It can be freely distributed or modified.
 
@@ -19,4 +20,4 @@ it from scratch, clone the repository, use visual studio to build the program an
 
 # How to use it
 
-Should be pretty self-explanatory. Run the program, click on the folder button to edit a new savegame. This should open in %USERDIRECTORY%\Documents\Alpha Protocol\Checkpoints. The savefiles are the ones ending with sav (duh...). If it isn't there, I am sorry. 
+Should be pretty self-explanatory. Run the program, click on the folder button to edit a new savegame. This should open in %USERDIRECTORY%\Documents\Alpha Protocol\Checkpoints. The savefiles are the ones ending with sav (who would have thought it). If there aren't any, I'm terribly sorry. Contact me with a problem description (What have you done - What did you expect - What happened) and I will do my best to fix the issue.
