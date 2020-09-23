@@ -20,4 +20,8 @@ it from scratch, clone the repository, use visual studio to build the program an
 
 # How to use it
 
-Should be pretty self-explanatory. Run the program, click on the folder button to edit a new savegame. This should open in %USERDIRECTORY%\Documents\Alpha Protocol\Checkpoints. The savefiles are the ones ending with sav (who would have thought it). If there aren't any, I'm terribly sorry. Contact me with a problem description (What have you done - What did you expect - What happened) and I will do my best to fix the issue.
+MAKE A BACKUP COPY OF YOUR SAVEGAME FIRST IN CASE ANYTHING GOES WRONG! 
+
+The rest is self-explanatory. Run the program, click on the folder button to edit a new savegame. A file selection menu opens in %USERDIRECTORY%\Documents\Alpha Protocol\Checkpoints. The savefiles are the ones ending with sav. 
+
+In case of an error, contact me with a problem description (What have you done - What did you expect - What happened) and I will do my best to fix the issue.
